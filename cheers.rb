@@ -6,13 +6,10 @@
 
 vowels = ["a", "e", "i", "o", "u"]
 puts "What's your name?"
-name = gets.chomp
-# puts "Your name is #{name}"
+name = gets.chomp.downcase
 
-name.each_char do |character, index|
-  if character == name[0]
-    puts "Give me an... #{character.capitalize}"
-  elsif vowels.include? character
+name.each_char do |character|
+  if vowels.include? character
     puts "Give me an... #{character.capitalize}"
   else
     puts "Give me a... #{character.capitalize}"
