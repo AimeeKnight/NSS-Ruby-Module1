@@ -17,7 +17,7 @@ def triangle(a, b, c)
   raise TriangleError if [a,b,c].min <= 0
     sides = [a,b,c].sort
   raise TriangleError if sides[0] + sides[1] <= sides[2]
-    [:equilateral,:isosceles,:scalene].fetch([a,b,c].uniq.size - 1)
+
   if a == b and a == c and b == c
     :equilateral
   elsif a == b or a == c or b == c

@@ -33,7 +33,7 @@ class AboutRegularExpressions < Neo::Koan
     # THINK ABOUT IT:
     #
     # When would * fail to match?
-    # never?
+    # never
   end
 
   # THINK ABOUT IT:
@@ -41,7 +41,7 @@ class AboutRegularExpressions < Neo::Koan
   # We say that the repetition operators above are "greedy."
   #
   # Why?
-  # they match zero or more, or one or more
+  # they match till the end without stupid
 
   # ------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ class AboutRegularExpressions < Neo::Koan
   # THINK ABOUT IT:
   #
   # Explain the difference between a character class ([...]) and alternation (|).
-  # speed?
+  # A character class matches a range of characters, while an alternation matches specific instances within.
 
   # ------------------------------------------------------------------
 
