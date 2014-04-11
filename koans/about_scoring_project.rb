@@ -31,12 +31,12 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
-  counts = Hash.new 0
+  totals = Hash.new 0
   points = 0
 
-  dice.each { |die| counts[die] += 1 }
+  dice.each { |die| totals[die] += 1 }
   
-  counts.each do |key, value|
+  totals.each do |key, value|
     if key == 1 && value >= 3
       points += 1000
       value -= 3
