@@ -1,7 +1,7 @@
 class LinkedListItem
   include Comparable
 
-  attr_accessor :new_item, :index
+  attr_accessor :new_item, :index, :payload
   attr_reader :payload, :next_list_item
 
   # called by LinkedListItem.new
