@@ -96,24 +96,14 @@ class LinkedList
   end
 
   def indexOf payload
-    index = 1
-    if @first_item == nil
-      nil
-    elsif @first_item.payload == payload
-      return index = 0
-    else
-      current_item = @first_item.next_list_item
-
-      while current_item
-        if current_item.payload == payload
-          return index
-        elsif current_item.next_list_item == nil
-          return nil
-        else
-          index += 1 
-          current_item = current_item.next_list_item
-        end
-      end
+    index = 0
+    current_item = @first_item
+    return nil if @first_item.nil?
+    while current_item
+      return index if current_item.payload == payload
+      return if current_item.next_list_item.nil?
+      index += 1 
+      current_item = current_item.next_list_item
     end
   end
 
