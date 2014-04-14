@@ -108,12 +108,11 @@ class LinkedList
   end
 
   def sorted?
-    return true if @first_item == nil
-      current_node = @first_item
-      until @size == 1 
-        return false if current_node > current_node.next_list_item
-        @size -= 1
-        current_node = current_node.next_list_item
+    current_item = @first_item
+    return true if current_item.nil?
+      until current_item.last? 
+        return false if current_item > current_item.next_list_item
+        current_item = current_item.next_list_item
       end
     true
   end
