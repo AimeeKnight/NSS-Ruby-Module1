@@ -1,49 +1,39 @@
 class LinkedListItem
   include Comparable
 
-  attr_accessor :new_item, :index, :payload
-  attr_reader :payload, :next_list_item
+  attr_accessor :payload
+  attr_reader :next_list_item
 
-  # called by LinkedListItem.new
   def initialize(payload)
     @payload = payload
-    @next_list_item = nil
-    @last = true
   end
 
-  def next_list_item= new_item
-    raise ArgumentError if self === new_item
-    @next_list_item = new_item
-    # set current list item to false since the new item is now the last item
-    @last = false
-  end
+  def <=>(other_item)
+    payload1 = self.payload
+    payload2 = other_item.payload
 
-  def next_list_item 
-    @next_list_item
-  end
+    precedence = [Fixnum, String, Symbol]
+    index1 = precedence.index(payload1.class)
+    index2 = precedence.index(payload2.class)
+    class_equality = (index1 <=> index2)
 
-  def last?
-    @last 
-  end
-
-  def <=> other
-    class1 = self.payload.class
-    class2 = other.payload.class
-
-    if class1 == class2
-      self.payload <=> other.payload
+    if class_equality == 0
+      payload1 <=> payload2
     else
-      return 1 if class1 == Symbol or (class1 == String and class2 == Fixnum)
-      return -1 if class1 == Fixnum or (class1 == String and class2 == Symbol)
+      class_equality
     end
   end
 
-  def === other
-    self.object_id === other.object_id
+  def ===(other_item)
+    self.equal? other_item
   end
 
-  def == other
-    self.class == other.class
+  def next_list_item=(item)
+    raise ArgumentError if self === item
+    @next_list_item = item
   end
 
+  def last?
+    @next_list_item.nil?
+  end
 end
