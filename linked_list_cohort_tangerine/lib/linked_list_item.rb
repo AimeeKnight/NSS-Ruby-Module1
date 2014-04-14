@@ -27,12 +27,14 @@ class LinkedListItem
   end
 
   def <=> other
-    if self.payload.is_a? Numeric
-      other.object_id <=> self.object_id
-    elsif other.payload.is_a? Numeric
-      other.object_id <=> self.object_id
+    class1 = self.payload.class
+    class2 = other.payload.class
+
+    if class1 == class2
+      self.payload <=> other.payload
     else
-      self.object_id <=> other.object_id
+      return 1 if class1 == Symbol or (class1 == String and class2 == Fixnum)
+      return -1 if class1 == Fixnum or (class1 == String and class2 == Symbol)
     end
   end
 

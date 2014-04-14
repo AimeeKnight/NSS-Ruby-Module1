@@ -145,20 +145,14 @@ class LinkedList
   end
 
   def sorted?
-    if @head == nil
-      true
-    else
+    return true if @head == nil
       current_node = @head
       until @size == 1 
-        if (current_node > current_node.next_list_item) == 1
-          return false 
-        else 
-          @size -= 1
-          current_node = current_node.next_list_item
-        end
+        return false if current_node > current_node.next_list_item
+        @size -= 1
+        current_node = current_node.next_list_item
       end
-      true
-    end
+    true
   end
 
 end
