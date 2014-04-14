@@ -70,19 +70,14 @@ class LinkedList
   end
 
   def size
-    if @first_item == nil
-      @size = 0
-    elsif @first_item.next_list_item == nil
-      @size = 1
-    else
-      @size = 2
-      current_item = @first_item.next_list_item
-      unless !current_item.next_list_item
-        current_item = current_item.next_list_item
-        @size += 1
-      end
-      @size
+    @size = 0
+    return @size if @first_item.nil?
+    current_item = @first_item
+    until current_item.nil?
+      @size += 1
+      current_item = current_item.next_list_item
     end
+    @size
   end
 
   def remove index

@@ -18,8 +18,10 @@ class LinkedListItem
     class_equality = (index1 <=> index2)
 
     if class_equality == 0
+      #comparison results based on the actual params values since the classes are the same
       payload1 <=> payload2
     else
+      # comparison results based on params class
       class_equality
     end
   end
