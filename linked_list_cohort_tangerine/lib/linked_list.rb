@@ -114,27 +114,17 @@ class LinkedList
 
   def sort
     return "| |" if @first_item.nil?
-    #return "| #{@first_item.payload}, #{@first_item.next_list_item.payload} |" if @first_item.next_list_item and @first_item
-    return "| #{@first_item.payload} |" if @first_item.next_list_item.nil?
 
     item = @first_item
-    result = "|"
-    until item.nil?
-      if item.next_list_item and item < item.next_list_item
-      puts
-      puts "#{item.payload}"
-      puts "#{item.next_list_item.payload}"
-        item, item.next_list_item = item.next_list_item, item
-        result << " " + item.payload.to_s
-        result << "," unless item.last?
-        item = item.next_list_item.next_list_item
+    until sorted?
+      if (item <=> item.next_list_item) == 1
+        item.payload, item.next_list_item.payload = item.next_list_item.payload, item.payload
+        sort
       else
-        result << " " + item.payload.to_s
-        result << "," unless item.last?
         item = item.next_list_item
       end
     end
-    result + " |"
+    self.to_s
   end
 
 
