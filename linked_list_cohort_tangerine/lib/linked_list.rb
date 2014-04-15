@@ -127,6 +127,12 @@ class LinkedList
     self.to_s
   end
 
-
+  def swap_with_next index
+    swap_left = get(index)
+    swap_right = get(index + 1)
+    
+    self[index], self[index + 1] = swap_right, swap_left
+  end
+  
 end
 
