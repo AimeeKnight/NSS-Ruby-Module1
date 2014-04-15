@@ -48,9 +48,12 @@ class LinkedList
     result + " |"
   end
 
-  def [] num
-    get num
-  end
+  #def [] num
+   # get num
+  #end
+  
+  #if you see bracket, call get
+  alias [] get
 
   def []=(index, new_payload)
     current_item = @first_item
@@ -96,7 +99,6 @@ class LinkedList
     return nil if @first_item.nil?
     while current_item
       return index if current_item.payload == payload
-      return if current_item.next_list_item.nil?
       index += 1 
       current_item = current_item.next_list_item
     end
